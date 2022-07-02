@@ -1,4 +1,4 @@
 function test() {
     console.log('blablabla');
-    console.log('blablabla');
+    console.log('blablabl');
 }
