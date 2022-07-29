@@ -18,8 +18,9 @@ function recurPal(str) {
 // С помощью регулярок
 function recPal(str) {
 	if(str.length == 0 || str == null) return false;
-	str = str.toLowerCase().replace(/[^0-9а-щыэюяёa-z]/gi, '');
-	str = str.replace(/ё/gi, 'е');
+	str = str.toLowerCase()
+			 .replace(/[^0-9а-щыэюяёa-z]/gi, '')
+			 .replace(/ё/gi, 'е');
 	if(str.length == 1) return true;
 	if(str.length == 2) return str[0] === str[1];
 	if(str[0] === str[str.length - 1]) return recPal(str.slice(1, -1)); 
