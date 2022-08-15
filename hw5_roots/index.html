@@ -14,7 +14,8 @@
         // возвращает массив корней
         function squareRoots(a, b, c) {
             const d = b * b - 4 * a * c; // дискриминант
-            if (d < 0 || a == 0)
+            if (a == 0) return [-c/b] 
+            if (d < 0)
                 return []; // нет корней
             if (d == 0)
                 return [-b / (2 * a)]; // один корень
@@ -53,11 +54,11 @@
             }
 
             {
-                console.log('тест 0,5,-10 -> нет корней');
-                const roots = squareRoots(0, 5, -10);
-                console.log(((roots.length == 0))
-                    ? 'пройден' : 'НЕ ПРОЙДЕН!')
-            }
+            console.log('тест 0,5,-10 -> один корень 2');
+            const roots=squareRoots(0,5,-10);
+            console.log( ((roots.length==1)&&(roots[0]==2))
+                ?'пройден':'НЕ ПРОЙДЕН!' )
+        }
 
         }
 
