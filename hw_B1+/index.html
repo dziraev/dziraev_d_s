@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src=""></script>
+    <script>
+        const whatCentury = (year) => Math.ceil(year/100);
+
+        let year = prompt('Введите год', '')
+        while(year < 0 || isNaN(year)) {
+            year = parseInt(prompt('Введите корректное число', 2022))
+        }
+        alert(`Это ${whatCentutry(year)} век`)
+    </script>
+</body>
+</html>
