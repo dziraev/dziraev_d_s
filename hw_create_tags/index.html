@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE_TAGS</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">create tags</header>
+        <main class="main">
+            <div class="block">
+                <div class="block__container">
+                    <div class="block__items">
+                        <div class="block__item">
+                            <button data-tag="h1" class="block__button button">&lt;h1&gt;</button>
+                        </div>
+                        <div class="block__item">
+                            <button data-tag="span" class="block__button button button_span">&lt;span&gt;</button>
+                        </div>
+                        <div class="block__item">
+                            <button data-tag="p" class="block__button button button_p">&lt;p&gt;</button>
+                        </div>
+                        <div class="block__item">
+                            <button data-tag="ul" class="block__button button button_ul">&lt;ul&gt;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="insert">
+                <div class="insert__container"></div>
+            </div>
+            <div class="modal">
+                <div class="modal__dialog">
+                    <div class="modal__content">
+                        <form class="modal__form" action="#">
+                            <div data-close class="modal__close">&times;</div>
+                            <div class="modal__title">Введите текст</div>
+                            <input required autocomplete="off" name="form[]" type="text" class="modal__input" placeholder="Ваш контент">
+                            <button data-add type="submit" class="button button_bg-white">Добавить текст на страницу</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

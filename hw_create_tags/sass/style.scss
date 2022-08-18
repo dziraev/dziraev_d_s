@@ -1,0 +1,296 @@
+/* =============== */
+/* &display=swap&subset=cyrillic-ext */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,regular,500,600,900,900italic&display=swap&subset=cyrillic-ext');
+
+
+/* ОБНУЛЕНИЕ СТИЛЕЙ */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+
+}
+
+li {
+	list-style: none;
+}
+
+a,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+img {
+	vertical-align: top;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	line-height: 1;
+	background-color: #333;
+	font-family: 'Roboto';
+	color: #fff;
+}
+
+/*===========VARIABLES============*/
+$peach: #f2726f;
+$black: #000;
+$h1: #cc875ff8;
+$span: #1ebeb6;
+$p: #5e80c4;
+$ul: #acb963;
+
+/*======WRAPPER=========*/
+.wrapper {
+	padding: 0px 0px;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+/*======CONTAINER=========*/
+[class*='__container'] {
+	box-sizing: content-box;
+	max-width: 1020px;
+	margin: 0px auto;
+	padding: 0 15px;
+}
+
+/*======MAIN=======*/
+.main {
+	flex-grow: 1;
+
+}
+
+/*======HEADER=======*/
+.header {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+	background-color: #7A956B;
+}
+
+/*=======FOOTER============*/
+.footer {
+
+}
+
+/*======BLOCK========*/
+.block {
+	// .block__container
+	&__container {
+		padding: 40px 0px 0px 0px;
+	}
+	// .block__items
+	&__items {
+		// background-color: #5d62b5;
+		display: flex;
+		margin: 0 -15px;
+		flex-wrap: wrap;
+		row-gap: 15px;
+		&:not(:last-child) {
+			margin-bottom: 40px ;
+		}
+	}
+	// .block__item
+	&__item {
+		padding: 0 15px;
+		flex: 1 0 25%;
+		min-width: 140px;
+	}
+	// .block__button
+	&__button {
+		width: 100%;
+	}
+}
+.button {
+	background-color: $peach;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 12px;
+	color: rgb(12, 8, 8);
+	border-radius: 8px;
+	font-weight: 700;
+	font-family: Arial;
+	padding: 12px 15px;
+	box-shadow: 1px 2px 2px 1px #8f5553;
+	&:focus, &:hover {
+		color: $peach;
+		outline: 2px solid;
+		background-color: #333;
+	}
+	&:active {
+		transform: translate(1px, 1px);
+		box-shadow: 0px 1px 2px 1px #8f5553;
+	}
+	&_bg-white {
+		&:focus, &:hover {
+			color: $peach;
+			outline: 2px solid;
+			background-color: #fff;
+		}
+	}
+	&_span {
+		background-color: $span;
+		box-shadow: 1px 2px 2px 1px #188880;
+		&:focus,&:hover {
+			color: $span;
+			outline: 2px solid;
+		}
+	}
+	&_p {
+		background-color: $p;
+		box-shadow: 1px 2px 2px 1px #445c8b;
+		&:focus,&:hover {
+			color: $p;
+			outline: 2px solid;
+		}
+	}
+	&_ul {
+		background-color: $ul;
+		box-shadow: 1px 2px 2px 1px #6b7246;
+		&:focus,&:hover {
+			color: $ul;
+			outline: 2px solid;
+		}
+	}
+
+}
+
+/*=======MODAL========*/
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	display: none;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, .5);
+	color: #000;
+	&._active {
+		display: block;
+	}
+	// .modal__dialog
+	&__dialog {
+		max-width: 500px;
+		margin: 50px auto;
+		text-align: center;
+	}
+	// .modal__content
+	&__content {
+		position: relative;
+		width: 100%;
+		padding: 40px;
+		background-color: #fff;
+		border: 1px solid rgba(0, 0, 0, .2);
+		border-radius: 4px;
+		overflow-y: auto
+	}
+	// .modal__close
+	&__close {
+		position: absolute;
+		top: 8px;
+		right: 14px;
+		font-size: 30px;
+		opacity: .5;
+		font-weight: 700;
+		border: none;
+		background-color: transparent;
+		cursor: pointer
+	}
+	// .modal__title
+	&__title {
+		text-align: center;
+		font-size: 22px;
+		text-transform: uppercase
+	}
+	// .modal__input
+	&__input {
+		display: block;
+		margin: 20px auto 20px auto;
+		width: 100%;
+		height: 50px;
+		background-color: #fff;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+		font-size: 18px;
+		padding: 0 20px;
+		outline: none;
+	}
+}
+
+/*=======INSERT========*/
+.insert {
+	padding: 40px 0px 0px 0px;
+	// .insert__container
+	&__container {
+		li {
+			position: relative;
+			color: $ul;
+			padding: 0px 0px 0px 20px;
+			&:not(:last-child) {
+				margin: 0px 0px 10px 0px; 
+			}
+			&::before{
+				content:'';
+				top: 10px;
+				left: 0;
+				background-color: $ul;
+				border-radius: 50%;
+				width: 16px;
+				height: 16px;
+				position: absolute;
+				border-radius: 50%
+			}
+		}
+		h1 {
+			color: $peach;
+		}
+		span {
+			display: block;
+			color: $span;
+		}
+		p {
+			color: $p;
+		}
+		li, h1, span, p {
+			font-weight: 700;
+			font-size: 32px;
+		}
+		ul, h1, span, p {
+			&:not(:last-child) {
+				margin: 0px 0px 10px 0px;
+			}
+		}
+	}
+}
