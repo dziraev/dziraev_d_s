@@ -6,7 +6,7 @@ function vowelsFilter(str) {
 function vowelsFor(str) {
     const vowels = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'];
     let count = 0;
-    str.toLowerCase().split('').forEach(i => ~vowels.indexOf(i) ? count+=1 : null);
+    str.toLowerCase().split('').forEach(i => ~vowels.indexOf(i) ? count++ : null);
     return count;
 }
 
