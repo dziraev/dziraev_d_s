@@ -25,9 +25,9 @@
 // }
 
 //--------- НА ES6 -------
-class HashStorageFunc {
+class HashStorageClass {
     // #storage = {}; приватное свойство
-    _storage = {};  //защищеное свойство (на уровне соглашения)
+    _storage = {};  //защищеное свойство (на уровне соглашения), но все равно публичное
 
     addValue(key, value) {
         this._storage[key] = value;
@@ -50,7 +50,7 @@ class HashStorageFunc {
     }
 }
 
-const drinkStorage = new HashStorageFunc();
+const drinkStorage = new HashStorageClass();
 
 const modalTriger = document.querySelectorAll('[data-btn]'),
       modal = document.querySelector('.modal'),
