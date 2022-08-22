@@ -23,6 +23,7 @@
 //         return Object.keys(storage);
 //     };
 // }
+
 //--------- НА ES6 -------
 class HashStorageFunc {
     // #storage = {}; приватное свойство
@@ -57,6 +58,7 @@ const modalTriger = document.querySelectorAll('[data-btn]'),
       formTitle = form.querySelector('.modal__title'),
       formBtn = form.querySelector('[data-add]'),
       formInput = form.querySelector('.modal__input'),
+      formRadio = form.querySelector('.modal__radio'),
       insert = document.querySelector('.insert__container');
       
 
@@ -65,8 +67,12 @@ let drinkName, drinkAlc, drinkRecipe, button;
 let questionCount = 0;
 
 function showModal() {
-    modal.classList.toggle('_active'); 
+    modal.classList.toggle('_active');
+    formInput.classList.remove('_active');
+    formInput.required = true;
+    formRadio.classList.remove('_active'); 
     questionCount = 0;
+    answer = [];
 }
 document.addEventListener('keydown', e => {
     if(e.code === 'Escape' && modal.classList.contains('_active')) {
@@ -115,29 +121,42 @@ let answer = [];
 form.addEventListener('submit', e => {
     e.preventDefault();
     const question = ['алкогольный?', 'введите рецепт напитка'];
-    if(button == 'enterInfo') {
+    if (button == 'enterInfo') {
         formTitle.textContent = question[questionCount];
-        answer.push(formInput.value);
+        formInput.required = false;
+        formInput.classList.add('_active');
+        formRadio.classList.add('_active');
+        if (questionCount == 1) {
+            const selected = document.querySelector('input[name="alcohol"]:checked').value;
+            answer.push(selected);
+            formInput.classList.remove('_active');
+            formInput.required = true;
+            formRadio.classList.remove('_active');
+        } 
+        if (questionCount != 1) answer.push(formInput.value);
         if (questionCount == question.length) {
-            showModal();
             [drinkName, drinkAlc, drinkRecipe] = answer;
-            answer = [];
+            showModal();
             drinkStorage.addValue(drinkName.toUpperCase(), {'alc': drinkAlc, 'recipe': drinkRecipe});
         } 
+        if(drinkStorage.getValue(formInput.value.toUpperCase())) {
+            showModal();
+            insert.innerHTML = `<h1>Данный напиток уже есть в списке, сперва удалите его!</h1>`;
+        }
         questionCount++;
     } else if(button == 'getInfo') {
         const getInfo = drinkStorage.getValue(formInput.value.toUpperCase());
         getInfo ? insert.innerHTML = `<h1>Напиток: ${formInput.value.toUpperCase()}</h1>
                                       <span>Алкогольный: ${getInfo.alc}</span>
                                       <p>Рецепт приготовления:</br>${getInfo.recipe}</p>` :
-                  insert.innerHTML = `<h1>Данный напиток отсутствует`;
+                  insert.innerHTML = `<h1>Данный напиток отсутствует</h1>`;
         showModal();
     } else if (button == 'deleteInfo') {
         showModal();
         drinkStorage.deleteValue(formInput.value.toUpperCase()) ? 
                         insert.innerHTML = `<h1>Информация о напитке удалена</h1>`:
-                        insert.innerHTML = `<h1>Данный напиток отсутствует в списке`;
-    } 
+                        insert.innerHTML = `<h1>Данный напиток отсутствует в списке</h1>`;
+    }
+    formBtn.blur();
     e.target.reset();
 });
-

@@ -1,7 +1,6 @@
 /* =============== */
 /* &display=swap&subset=cyrillic-ext */
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,regular,500,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,regular,500,600,900,900italic&display=swap&subset=cyrillic-ext');
 
 
 /* ОБНУЛЕНИЕ СТИЛЕЙ */
@@ -159,6 +158,9 @@ $ul: #acb963;
 	&_form {
 		min-width: 110px;
 	}
+	&._active {
+		display: none;
+	}
 }
 
 /*=======MODAL========*/
@@ -221,10 +223,77 @@ $ul: #acb963;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
 		font-size: 16px;
 		padding: 0 20px;
-		outline: none;
+		&:focus {
+			outline: 1px solid $peach;
+		}
 		&:focus::placeholder {
 			transition: all 0.3s ease 0s;
 			transform: translate(-100%, 0);
+		}
+		&._active {
+			display: none;
+		}
+	}
+	// .modal__radio
+	&__radio {
+		margin: 20px auto;
+		display: none;
+		&._active {
+			display: block;
+		}
+	}
+}
+
+/*=======RADIOBUTTONS========*/
+.radiobuttons {
+	// .radiobuttons__item
+	&__item {
+		font-size: 0px;
+		position: relative;
+		&:not(:last-child) {
+			margin: 0px 0px 10px 0px;
+		}
+	}
+	// .radiobuttons__input
+	&__input {
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		&:checked + .radiobuttons__label::after {
+			transform: scale(1);
+		}
+	}
+	// .radiobuttons__label
+	&__label {
+		font-size: 16px;
+		min-width: 60px;
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		column-gap: 10px;
+		cursor: pointer;
+		&::before{
+			content:'';
+			flex: 0 0 20px;
+			height: 20px;
+			min-width: 20px;
+			border-radius: 50%;
+			background-color: #fff;
+			border: 1px solid $peach;	
+		}
+		&::after{
+			content:'';
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			background-color: $peach;
+			border-radius: 50%;
+			height: 10px;
+			width: 10px;
+			transform: scale(0);
+			transition: transform 0.3s ease 0s;
 		}
 	}
 }

@@ -39,6 +39,18 @@
                             <div data-close class="modal__close">&times;</div>
                             <div class="modal__title">Введите название напитка</div>
                             <input required autocomplete="off" name="form[]" type="text" placeholder='Ваш текст' class="modal__input">
+                            <div class="modal__radio">
+                                <div class="radiobuttons">
+                                    <div class="radiobuttons__item">
+                                        <input id="yes" type="radio" name="alcohol" value="Да" checked class="radiobuttons__input">
+                                        <label for="yes" class="radiobuttons__label">Да</label>
+                                    </div>
+                                    <div class="radiobuttons__item">
+                                        <input id="no" type="radio" name="alcohol" value="Нет" class="radiobuttons__input">
+                                        <label for="no" class="radiobuttons__label">Нет</label>
+                                    </div>
+                                </div>
+                            </div>
                             <button data-add type="submit" class="button button_bg-white button_form">Готово</button>
                         </form>
                     </div>
