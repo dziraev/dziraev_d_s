@@ -124,14 +124,15 @@ form.addEventListener('submit', e => {
     const question = ['алкогольный?', 'введите рецепт напитка'];
     if (button == 'enterInfo') {
         formTitle.textContent = question[questionCount];
+        if (drinkStorage.getValue(formInput.value.toUpperCase()) && questionCount == 0) {
+            insert.innerHTML = `<h1>Данный напиток уже есть в списке, сперва удалите его!</h1>`;
+            showModal();
+            return;
+        }
         if (questionCount == 0) {
             formInput.required = false;
             formInput.classList.add('_active');
             formRadio.classList.add('_active');
-        }
-        if (drinkStorage.getValue(formInput.value.toUpperCase()) && questionCount == 0) {
-            insert.innerHTML = `<h1>Данный напиток уже есть в списке, сперва удалите его!</h1>`;
-            showModal();
         }
         if (questionCount == 1) {
             const selected = document.querySelector('input[name="alcohol"]:checked').value;
