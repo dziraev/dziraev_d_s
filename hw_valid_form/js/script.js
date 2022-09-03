@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function validVisitors(input) {
         const itemValue = input.value;
         const error     = input.nextElementSibling;
-        if (!itemValue) {
+        if (!itemValue.trim()) {
             return formAddError(input, error, 'Вы не ввели количество посетителей');
         } else if (!/^[0-9]+$/.test(itemValue)) {
             return formAddError(input, error, 'Используйте только положительные целые числа');
