@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="short icon" href="img/impact/duck.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>drag'n'drop</title>
 </head>
@@ -20,16 +19,16 @@
                 <form action="#" class="form">
                     <div class="form__line">
                         <label for="itemName" class="form__label">Введите название товара</label>
-                        <input id="itemName" type="text" name="item" class="form__input">
+                        <input id="itemName" autocomplete="off" type="text" name="item" class="form__input">
                     </div>
                     <div class="form__line">
                         <label for="itemSRC" class="form__label">Введите URL для изображения товара</label>
-                        <input id="itemSRC" type="text" name="src" class="form__input">
+                        <input id="itemSRC" autocomplete="off"  type="text" name="src" class="form__input">
                     </div>
                     <div class="form__line">
                         <label for="itemDescription" class="form__label">Введите описание товара</label>
-                        <textarea id="itemDescription" name="description"
-                                  class="form__input form__input_area "></textarea>
+                        <textarea id="itemDescription" autocomplete="off" name="description"
+                                  class="form__input form__input_area"></textarea>
                     </div>
                     <div class="form__button">
                         <button class="button" type="button">Добавить</button>
@@ -37,28 +36,23 @@
                     </div>
                 </form>
                 <div class="basket">
-                    <a href="#" class="basket__link">
-                        <img src="img/cart.svg" alt="cart" class="basket__img">
-                    </a>
-                    <div class="basket__quantity">2</div>
+                    <img src="img/cart.svg" alt="cart" class="basket__img">
+                    <div class="basket__quantity"></div>
                 </div>
             </div>
         </div>
-
         <div class="block">
             <div class="block__container">
-                <div class="block__items">
-                    <div class="block__item">
-                        <div class="item-block">
-                            <a href="#" class="item-block__picture _ibg">
-                                <img class="item-block__image" src="https://bamsvegan.com/wp-content/uploads/2019/12/IMG_4878.jpg">
-                            </a>
-                            <div class="item-block__body">
-                                <a href="" class="item-block__title">Samsubg</a>
-                                <div class="item-block__text">флагмен 2022 года крутая камера</div>
-                                <a href="" class="item-block__button">Добавить</a>
-                            </div>
-                        </div>
+                <div class="block__items"></div>
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal__container">
+                <div data-close class="modal__close">&times;</div>
+                <div class="modal__title">empty</div>
+                <div class="block">
+                    <div class="block__container">
+                        <div class="block__items"></div>
                     </div>
                 </div>
             </div>
