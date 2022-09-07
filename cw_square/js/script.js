@@ -21,33 +21,30 @@ function moveSquare(d) {
             squareIn.style.top = `${--y}px`;
         } else {
             square.classList.add('_active')
-            clearInterval(timer);
         }
     } else if (d === 's') {
         if (y < borderBottom) {
             squareIn.style.top = `${++y}px`;
         } else {
             square.classList.add('_active')
-            clearInterval(timer);
         }
     } else if (d === 'd') {
         if (x < borderRight) {
             squareIn.style.left = `${++x}px`;
         } else {
             square.classList.add('_active')
-            clearInterval(timer);
         }
     } else if (d === 'a') {
         if (x > 0) {
             squareIn.style.left = `${--x}px`;
         } else {
             square.classList.add('_active')
-            clearInterval(timer);
         }
     }
 }
 
 document.addEventListener('keydown', (e) => {
+    if (e.repeat) return
     const pressBtn = e.code;
     switch (pressBtn) {
         case 'KeyS':
