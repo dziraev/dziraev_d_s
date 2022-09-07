@@ -20,25 +20,29 @@ function moveSquare(d) {
         if (y > 0) {
             squareIn.style.top = `${--y}px`;
         } else {
-            square.classList.add('_active')
+            squareIn.classList.add('_active')
+            checkTimer()
         }
     } else if (d === 's') {
         if (y < borderBottom) {
             squareIn.style.top = `${++y}px`;
         } else {
-            square.classList.add('_active')
+            squareIn.classList.add('_active')
+            checkTimer()
         }
     } else if (d === 'd') {
         if (x < borderRight) {
             squareIn.style.left = `${++x}px`;
         } else {
-            square.classList.add('_active')
+            squareIn.classList.add('_active')
+            checkTimer()
         }
     } else if (d === 'a') {
         if (x > 0) {
             squareIn.style.left = `${--x}px`;
         } else {
-            square.classList.add('_active')
+            squareIn.classList.add('_active')
+            checkTimer()
         }
     }
 }
@@ -48,22 +52,22 @@ document.addEventListener('keydown', (e) => {
     const pressBtn = e.code;
     switch (pressBtn) {
         case 'KeyS':
-            square.classList.remove('_active')
+            y < borderBottom ? squareIn.classList.remove('_active') : null;
             checkTimer()
             timer = setInterval(moveSquare, 5, 's')
             break
         case 'KeyW':
-            square.classList.remove('_active')
+            y > 0 ? squareIn.classList.remove('_active'): null;
             checkTimer()
             timer = setInterval(moveSquare, 5, 'w')
             break
         case 'KeyD':
-            square.classList.remove('_active')
+            x < borderRight ? squareIn.classList.remove('_active') : null;
             checkTimer()
             timer = setInterval(moveSquare, 5, 'd')
             break
         case 'KeyA':
-            square.classList.remove('_active')
+            x > 0 ? squareIn.classList.remove('_active') : null;
             checkTimer()
             timer = setInterval(moveSquare, 5, 'a')
             break
