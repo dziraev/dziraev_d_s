@@ -19,14 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     paymentMethod.forEach(i => i.addEventListener('change', validPayment.bind(null, radioBlock)))
 
     form.addEventListener('submit', (e) => {
-        let res = [validDevelopers(inputDev), validSite(inputSite), validURL(inputURL),
-            validDate(inputDate), validEmail(inputEmail), validVisitors(inputVisitors),
-            validDescription(inputDescription), validCatalog(inputCatalog), validPayment(radioBlock)].every(i => i ===
-                                                                                                                 true);
-
-        if (!res) {
-            e.preventDefault();
-            focusInput(allInputs)
+        try {
+            let res = [validDevelopers(inputDev), validSite(inputSite), validURL(inputURL),
+                       validDate(inputDate), validEmail(inputEmail), validVisitors(inputVisitors),
+                       validDescription(inputDescription), validCatalog(inputCatalog),
+                       validPayment(radioBlock)].every(i => i === true);
+            if (!res) {
+                e.preventDefault();
+                focusInput(allInputs)
+            }
+        } catch (err) {
+            e.preventDefault()
         }
     })
 
