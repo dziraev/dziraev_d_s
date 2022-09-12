@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALID_FORM</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">valid_form</header>
+        <main class="main">
+                    <div class="form">
+                        <h2 class="form__title">Заполните форму</h2>
+                        <form action="https://fe.it-academy.by/TestForm.php" method="post" class="form__body">
+                            <div class="form__line">
+                                <label for="formDevelopers" class="form__label form__label_star">Разработчики</label>
+                                <input id="formDevelopers" autocomplete="off" name="developers" type="text"
+                                       class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formSite" class="form__label form__label_star">Название сайта</label>
+                                <input id="formSite" autocomplete="off" name='website' type="text"
+                                       class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formURL" class="form__label form__label_star">URL cайта</label>
+                                <input id="formURL" autocomplete="off" placeholder="www.example.com" name="url" type="text"
+                                       class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formDate" class="form__label form__label_star">Дата запуска сайта</label>
+                                <input id="formDate" autocomplete="off" name="date" type="date" class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formVisitors" class="form__label form__label_star">Посетителей в сутки</label>
+                                <input id="formVisitors" autocomplete="off" name="visitors" type="text"
+                                       class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formEmail" class="form__label form__label_star">E-mail для связи:</label>
+                                <input id="formEmail" autocomplete="off" name="email" type="text" class="form__input _req">
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <label for="formCatalog" class="form__label form__label_star">Рубрика каталога</label>
+                                <select id="formCatalog" name="catalog" class="form__input">
+                                    <option value="1">Бытовая техника</option>
+                                    <option value="2">Здоровье</option>
+                                    <option value="3">Домашний уют</option>
+                                </select>
+                                <span class="form__error"></span>
+                            </div>
+                            <div class="form__line">
+                                <div class="radiobuttons">
+                                    <h2 class="radiobuttons__title radiobuttons__title_star">Размещение:</h2>
+                                    <div class="radiobuttons__item">
+                                        <input id="formFree" type="radio" name="payment" value="free"
+                                               class="radiobuttons__input">
+                                        <label for="formFree" class="radiobuttons__label">бесплатное</label>
+                                    </div>
+                                    <div class="radiobuttons__item">
+                                        <input id="formPaid" type="radio" name="payment" value="paid"
+                                               class="radiobuttons__input">
+                                        <label for="formPaid" class="radiobuttons__label">платное</label>
+                                    </div>
+                                    <div class="radiobuttons__item">
+                                        <input id="formVip" type="radio" name="payment" value="vip"
+                                               class="radiobuttons__input">
+                                        <label for="formVip" class="radiobuttons__label">VIP</label>
+                                    </div>
+                                    <span class="radiobuttons__error"></span>
+                                </div>
+                            </div>
+                            <div class="form__line">
+                                <div class="checkbox">
+                                    <input id="formReview" type="checkbox" name="review"
+                                           value="yes" class="checkbox__input">
+                                    <label for="formReview" class="checkbox__label">Разрешить отзывы:</label>
+                                </div>
+                            </div>
+                            <div class="form__line">
+                                <label for="formDescription" class="form__label form__label_star">Описание сайта:</label>
+                                <div class="form__block">
+                                    <textarea id="formDescription" name="description"
+                                                           class="form__input form__input_area _req"></textarea>
+                                    <span class="form__error"></span>
+                                </div>
+                            </div>
+                            <div class="form__button">
+                                <button type="submit" class="button">Опубликовать</button>
+                            </div>
+                        </form>
+                    </div>
+        </main>
+        <footer class="footer">
+        </footer>
+    </div>
+    <script src="js/script.js" >
+    </script>
+</body>
+
+</html>
+
