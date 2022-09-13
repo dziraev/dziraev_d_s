@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag'n'drop</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        Drag'n'Drop
+    </header>
+    <main class="main">
+        <div class="info">
+            <div class="info__container">
+                <form action="#" class="form">
+                    <div class="form__line">
+                        <label for="itemName" class="form__label">Введите название товара</label>
+                        <input id="itemName" autocomplete="off" type="text" name="item" class="form__input">
+                    </div>
+                    <div class="form__line">
+                        <label for="itemSRC" class="form__label">Введите URL для изображения товара</label>
+                        <input id="itemSRC" autocomplete="off"  type="text" name="src" class="form__input">
+                    </div>
+                    <div class="form__line">
+                        <label for="itemDescription" class="form__label">Введите описание товара</label>
+                        <textarea id="itemDescription" autocomplete="off" name="description"
+                                  class="form__input form__input_area"></textarea>
+                    </div>
+                    <div class="form__button">
+                        <button class="button" type="button">Добавить</button>
+                        <button class="button" type="submit">рэндэр</button>
+                    </div>
+                </form>
+                <div class="basket">
+                    <img src="img/cart.svg" alt="cart" class="basket__img">
+                    <div class="basket__quantity"></div>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="block__container">
+                <div class="block__items"></div>
+            </div>
+        </div>
+        <div class="modal">
+            <div class="modal__container">
+                <div data-close class="modal__close">&times;</div>
+                <div class="modal__title">empty</div>
+                <div class="block">
+                    <div class="block__container">
+                        <div class="block__items"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+    </footer>
+</div>
+<script src="js/script.js">
+</script>
+</body>
+
+</html>
