@@ -66,16 +66,21 @@ form.addEventListener('submit', (e) => {
 
         update();
 
-        timer = setInterval(update, 1000)
+        timer = setInterval(update)
 
         function update() {
             const currTime = new Date();
-            const timeObj  = formatDate(currTime);
+            let timeObj    = formatDate(currTime);
+            let sec = +timeObj.sec + timeObj.ms / 1000; //секунды + милисекунды, для плавности стрелки
+            let fraction = (sec / 100 * 1.66).toFixed(3).slice(2); // cоздаем для минут дробную часть (для плавности)
+                                                                            // т.к. секунд всего 60 (100/60 = 1.66)
 
-            time.textContent          = `${timeObj.hour}:${timeObj.min}:${timeObj.sec}`
-            hourArrow.style.transform = `translateY(-50%) rotate(${timeObj.hour * 30 + timeObj.min / 2 - 90}deg)`;
-            minArrow.style.transform  = `translateY(-50%) rotate(${timeObj.min * 6 - 90}deg)`;
-            secArrow.style.transform  = `translateY(-50%) rotate(${timeObj.sec * 6 - 90}deg)`;
+            let minut = `${timeObj.min}.${fraction}`;
+
+            time.textContent          = `${timeObj.hour}:${timeObj.min}:${timeObj.sec}`;
+            hourArrow.style.transform = `translateY(-50%) rotate(${timeObj.hour * 30 + minut / 2 - 90}deg)`;
+            minArrow.style.transform  = `translateY(-50%) rotate(${minut * 6 - 90}deg)`;
+            secArrow.style.transform  = `translateY(-50%) rotate(${sec * 6 - 90}deg)`;
         }
 
     } else {
@@ -98,12 +103,13 @@ function validInput(input, errorEl) {
 function formatDate(date) {
     let hour = date.getHours();
     let min  = date.getMinutes();
-    let sec  = date.getSeconds()
+    let sec  = date.getSeconds();
+    let ms   = date.getMilliseconds();
 
     hour = hour < 10 ? '0' + hour : hour;
     min  = min < 10 ? '0' + min : min;
     sec  = sec < 10 ? '0' + sec : sec;
 
-    return {hour, min, sec}
+    return {hour, min, sec, ms}
 }
 
