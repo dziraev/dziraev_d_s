@@ -79,6 +79,8 @@ btnReset.onclick = function () {
     racketRight.count = 0;
     if (!timer) {
         updateCount();
+        showOpacity(playerR);
+        showOpacity(playerL);
         ball.posX       = arreaW / 2 - ballSize / 2;
         ball.posY       = arreaH / 2 - ballSize / 2;
         racketLeft.posY = racketRight.posY = arreaH / 2 - racketH / 2;

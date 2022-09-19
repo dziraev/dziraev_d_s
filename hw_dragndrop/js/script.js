@@ -54,6 +54,7 @@ form.onsubmit = function (e) {
         addedItems            = document.querySelectorAll('.block__item');
 
         addedItems.forEach(i => {
+            i.draggable = true;
             i.ondragstart = itemDragStart;
             i.ondragend   = itemDragEnd;
         })

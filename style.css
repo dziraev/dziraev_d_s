@@ -105,3 +105,9 @@ body {
 .list__ref:hover {
     color: salmon;
 }
+.list__ref._crossed {
+    text-decoration: line-through wavy salmon;
+}
+.list__ref._crossed:hover {
+    text-decoration: line-through wavy #fff;
+}
