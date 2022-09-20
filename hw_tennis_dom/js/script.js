@@ -30,14 +30,12 @@ const ball           = {
     posX: arrea.width / 2 - ballSize / 2,
     posY: arrea.height / 2 - ballSize / 2,
     boost: 0.1,
-
-    update() {
-        ballElem.style.left = Math.round(this.posX) + "px";
-        ballElem.style.top  = Math.round(this.posY) + "px";
+    update(elem, posX, posY) {
+        elem.style.transform = `translate(${posX}px, ${posY}px) translateZ(0)`;
     }
 }
 ballElem.style.width = ballElem.style.height = ballSize + 'px';
-ball.update()
+ball.update(ballElem, ball.posX, ball.posY)
 
 //RACKET LEFT
 const racketLeft         = {
@@ -45,15 +43,10 @@ const racketLeft         = {
     posX: 0,
     posY: arreaH / 2 - racketH / 2,
     count: 0,
-
-    update: function () {
-        racketElemL.style.left = Math.round(this.posX) + "px";
-        racketElemL.style.top  = Math.round(this.posY) + "px";
-    }
 }
 racketElemL.style.width  = racketW + 'px';
 racketElemL.style.height = racketH + 'px';
-racketLeft.update()
+updateRacketPos(racketElemL, racketLeft.posY)
 
 //RACKET RIGHT
 const racketRight        = {
@@ -61,15 +54,11 @@ const racketRight        = {
     posX: 0,
     posY: arreaH / 2 - racketH / 2,
     count: 0,
-
-    update: function () {
-        racketElemR.style.right = Math.round(this.posX) + "px";
-        racketElemR.style.top   = Math.round(this.posY) + "px";
-    }
 }
 racketElemR.style.width  = racketW + 'px';
+racketElemR.style.right  = racketRight.posX;
 racketElemR.style.height = racketH + 'px';
-racketRight.update()
+updateRacketPos(racketElemR, racketRight.posY)
 
 
 btnStart.onclick = startGame;
@@ -84,9 +73,9 @@ btnReset.onclick = function () {
         ball.posX       = arreaW / 2 - ballSize / 2;
         ball.posY       = arreaH / 2 - ballSize / 2;
         racketLeft.posY = racketRight.posY = arreaH / 2 - racketH / 2;
-        ball.update()
-        racketRight.update();
-        racketLeft.update();
+        ball.update(ballElem, ball.posX, ball.posY)
+        updateRacketPos(racketElemL, racketLeft.posY);
+        updateRacketPos(racketElemR, racketRight.posY);
     }
 }
 
@@ -96,8 +85,8 @@ function startGame() {
         ball.posY   = arreaH / 2 - ballSize / 2;
         const dirBallX    = Math.random() < 0.5 ? 1 : -1;
         const dirBallY    = Math.random() < 0.5 ? 1 : -1;
-        ball.speedX = dirBallX * Math.round((Math.random() * 2 + 5)); //при старте всегда новая скорость для разного направления мяча
-        ball.speedY = dirBallY * Math.round((Math.random() * 4 + 5));
+        ball.speedX = dirBallX * (Math.random() * 2 + 5); //при старте всегда новая скорость для разного направления мяча
+        ball.speedY = dirBallY * (Math.random() * 4 + 5);
         move()
     }
 }
@@ -207,9 +196,13 @@ function move() {
         updateCount();
         ball.posX = arreaW - ballSize;
     }
-    racketLeft.update()
-    racketRight.update()
-    ball.update()
+    updateRacketPos(racketElemL, racketLeft.posY)
+    updateRacketPos(racketElemR, racketRight.posY)
+    ball.update(ballElem, ball.posX, ball.posY)
+}
+
+function updateRacketPos(elem, posY) {
+   elem.style.transform = `translateY(${posY}px) translateZ(0)`;
 }
 
 function updateCount() {
