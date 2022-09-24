@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag'n'drop</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        basket
+    </header>
+    <main class="main">
+        <div class="block">
+            <div class="block__container">
+                <div class="block__items"></div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+    </footer>
+</div>
+<script>
+    let items;
+
+    function render(a) {
+        if (a.length) {
+            return a.reduce((acc, curr, id) =>
+                `${acc}<div class="block__item" data-id=${id}>
+                       <div class="item-block">
+                            <div class="item-block__count ${curr.count > 1 ? '_active': ''}">${curr.count}</div>
+                            <a href="#" class="item-block__picture _ibg">
+                               <img class="item-block__image" src="${curr.src}">
+                            </a>
+                            <div class="item-block__body">
+                                <h2 class="item-block__title">${curr.name}</h2>
+                                <div class="item-block__text">${curr.description}</div>
+                                <div class="item-block__button button" data-id=${id} onclick="deleteItem(${id})">Удалить</div>
+                            </div>
+                        </div>
+                   </div>`, '')
+        }
+    }
+    function deleteItem(id) {
+        --items[id].count;
+        localStorage['items'] = JSON.stringify(items)
+        checkItem(id);
+    }
+    function checkItem(id) {
+        const count = items[id].count;
+        const i = document.querySelector(`[data-id="${id}"] .item-block__count`);
+        if (count > 1) {
+            i.innerHTML = `${count}`;
+        } else if (count === 1) {
+            i.innerHTML = `${count}`;
+            i.classList.remove('_active');
+        } else {
+            document.querySelector(`.block__item[data-id="${id}"]`).remove()
+        }
+        localStorage['items'] = JSON.stringify(items)
+    }
+
+    const blockInsert = document.querySelector('.block__items');
+    window.onstorage  = () => {
+        items = JSON.parse(localStorage['items'])
+        blockInsert.innerHTML = render(items)
+
+        items.forEach((item, i) => {
+            checkItem(i)
+        })
+    }
+</script>
+</body>
+
+</html>
